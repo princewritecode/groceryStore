@@ -24,7 +24,7 @@ const RestaurantMenu = () =>
     if (resInfo === null) return <Shimmer></Shimmer>;
 
     const { name, cuisines } = resInfo.cards[2].card.card.info;
-    const { itemCards } = resInfo.cards[5].groupedCard.cardGroupMap.REGULAR.cards[2].card.card;
+    const { itemCards } = resInfo.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card;
     return (<div className="menu">
         <h1>{name}</h1>
         <img></img>
