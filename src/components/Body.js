@@ -1,6 +1,7 @@
 import { RestaurantCard } from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 // let listOfRestaurant = [
 //     {
 //         "id": "581971",
@@ -32,18 +33,26 @@ const Body = () =>
     {
         fetchData();
     }, []);
+
     const fetchData = async () =>
     {
-        const data = await fetch('https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.71700&lng=75.83370&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING', {
-            headers: {
-                'x-cors-api-key': 'temp_a241477df64a8b33383702fa47d22a96'
-            }
-        });
+        try
+        {
+            const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.71700&lng=75.83370&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
 
-        const json = await data.json();
-        setListOfRestaurant(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
-        setFilteredRestaurant(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
+
+            const json = await data.json();
+            setListOfRestaurant(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
+            setFilteredRestaurant(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
+        } catch (error)
+        {
+            console.log('Cannot fetch data from API', error);
+        }
+
     };
+
+
+
     return listOfRestaurant.length == 0 ? <Shimmer></Shimmer> : (
         <div className="body">
             <div className="filter">
@@ -75,15 +84,13 @@ const Body = () =>
             </div>
             <div className="restaurant-cards">
                 {
-
-
                     filteredRestaurant.map((restaurant) =>
                     {
                         return (
-                            <RestaurantCard key={restaurant.info.id} resdata={restaurant}></RestaurantCard>);
+                            <Link target="blank" key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}>
+                                <RestaurantCard resdata={restaurant}></RestaurantCard>
+                            </Link>);
                     })
-
-
                 }
 
 

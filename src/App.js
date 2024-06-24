@@ -7,6 +7,7 @@ import { About } from "./components/About";
 import { Contact } from "./components/Contactus";
 import { Error } from "./components/Error";
 import { RestaurantMenu } from "./components/Restaurantmenu";
+
 const Applayout = () =>
 {
     return (
@@ -16,12 +17,10 @@ const Applayout = () =>
         </>
     );
 };
-
 const appRouter = createBrowserRouter([
     {
         path: '/'
         , element: <Applayout></Applayout>,
-
         children: [
             {
                 path: '/',
@@ -41,10 +40,8 @@ const appRouter = createBrowserRouter([
                 element: <RestaurantMenu></RestaurantMenu>,
             }
         ],
-
         errorElement: <Error></Error>
     }
-
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
