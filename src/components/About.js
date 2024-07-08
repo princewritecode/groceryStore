@@ -8,7 +8,6 @@ class About extends React.Component
         super();
         console.log('parent constructor is called');
     }
-
     componentDidMount()
     {
         console.log('parent component id mount is called');

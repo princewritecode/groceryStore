@@ -33,7 +33,6 @@ const Body = () =>
     {
         fetchData();
     }, []);
-
     const fetchData = async () =>
     {
         try
@@ -42,17 +41,13 @@ const Body = () =>
 
 
             const json = await data.json();
-            setListOfRestaurant(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
-            setFilteredRestaurant(json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants);
+            setListOfRestaurant(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
+            setFilteredRestaurant(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
         } catch (error)
         {
             console.log('Cannot fetch data from API', error);
         }
-
     };
-
-
-
     return listOfRestaurant.length == 0 ? <Shimmer></Shimmer> : (
         <div className="body">
             <div className="filter">
@@ -92,8 +87,6 @@ const Body = () =>
                             </Link>);
                     })
                 }
-
-
                 {/* {
                     listOfRestaurant.map((res) =>
                     {

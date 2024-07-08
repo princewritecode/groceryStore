@@ -3,8 +3,11 @@
 }
 
 body {
+  justify-content: center;
+  align-items: center;
   margin: 0;
   padding: 0;
+  display: flex;
 }
 
 #container-nav {
@@ -41,8 +44,12 @@ body {
 }
 
 .filter {
-  margin-top: 2rem;
-  margin-left: 5rem;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  height: 25%;
+  display: flex;
 }
 
 .shimmer-card {
@@ -63,8 +70,16 @@ body {
 }
 
 .search {
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
+  display: flex;
+}
+
+.search-box {
+  width: 80%;
 }
 
 .user--card {

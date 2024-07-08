@@ -7,7 +7,6 @@ import { About } from "./components/About";
 import { Contact } from "./components/Contactus";
 import { Error } from "./components/Error";
 import { RestaurantMenu } from "./components/Restaurantmenu";
-
 const Applayout = () =>
 {
     return (
