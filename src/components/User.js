@@ -13,10 +13,8 @@ class User extends React.Component
             }
         };
     }
-
     async componentDidMount()
     {
-
         const fetchData = await fetch('https://api.github.com/users/princewritecode');
         const dataRecieved = await fetchData.json();
         this.setState({
@@ -24,7 +22,6 @@ class User extends React.Component
         });
         console.log(dataRecieved);
     }
-
     componentDidUpdate()
     {
         console.log('component did update is called after rendered bactch');

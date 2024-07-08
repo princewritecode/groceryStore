@@ -2,6 +2,7 @@ import { RestaurantCard } from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../../utils/useOnlineStatus";
 // let listOfRestaurant = [
 //     {
 //         "id": "581971",
@@ -48,53 +49,65 @@ const Body = () =>
             console.log('Cannot fetch data from API', error);
         }
     };
-    return listOfRestaurant.length == 0 ? <Shimmer></Shimmer> : (
-        <div className="body">
-            <div className="filter">
-                <div className="search">
-                    <input onChange={(e) =>
-                    {
-                        setSearchText(e.target.value);
-                    }} type="text" className="search-box" value={searchText} placeholder="Search For Restaurant"></input>
-                    <button onClick={() =>
-                    {
-                        console.log(listOfRestaurant);
-                        const filteredRestaurant = listOfRestaurant.filter((res) =>
+
+    const onlineStatus = useOnlineStatus();
+    if (onlineStatus === false)
+    {
+        return (
+            <h1>Looks something is wrong</h1>
+        );
+    }
+    else
+    {
+        return listOfRestaurant.length == 0 ? <Shimmer></Shimmer> : (
+            <div className="body">
+                <div className="filter">
+                    <div className="search">
+                        <input onChange={(e) =>
                         {
-                            return res.info.name.toLowerCase().includes(searchText);
-                        });
-                        setFilteredRestaurant(filteredRestaurant);
-                    }}
-                    >Search</button>
+                            setSearchText(e.target.value);
+                        }} type="text" className="search-box" value={searchText} placeholder="Search For Restaurant"></input>
+                        <button onClick={() =>
+                        {
+                            console.log(listOfRestaurant);
+                            const filteredRestaurant = listOfRestaurant.filter((res) =>
+                            {
+                                return res.info.name.toLowerCase().includes(searchText);
+                            });
+                            setFilteredRestaurant(filteredRestaurant);
+                        }}
+                        >Search</button>
+                    </div>
+                    <button className="filter-btn" onClick={
+                        () =>
+                        {
+                            const filteredList = listOfRestaurant.filter(
+                                (res) => res.info.avgRating > 4.4
+                            );
+                            setFilteredRestaurant(filteredList);
+                        }
+                    }>Top Rated Restaurant</button>
                 </div>
-                <button className="filter-btn" onClick={
-                    () =>
+                <div className="restaurant-cards">
                     {
-                        const filteredList = listOfRestaurant.filter(
-                            (res) => res.info.avgRating > 4.4
-                        );
-                        setFilteredRestaurant(filteredList);
+                        filteredRestaurant.map((restaurant) =>
+                        {
+                            return (
+                                <Link target="blank" key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}>
+                                    <RestaurantCard resdata={restaurant}></RestaurantCard>
+                                </Link>);
+                        })
                     }
-                }>Top Rated Restaurant</button>
-            </div>
-            <div className="restaurant-cards">
-                {
-                    filteredRestaurant.map((restaurant) =>
-                    {
-                        return (
-                            <Link target="blank" key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}>
-                                <RestaurantCard resdata={restaurant}></RestaurantCard>
-                            </Link>);
-                    })
-                }
-                {/* {
+                    {/* {
                     listOfRestaurant.map((res) =>
                     {
                         return <RestaurantCard resdata={res}></RestaurantCard>;
                     })
                 } */}
+                </div>
             </div>
-        </div>
-    );
-};
+        );
+    }
+}
+    ;
 export { Body };
