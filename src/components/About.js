@@ -12,15 +12,13 @@ class About extends React.Component
     {
         console.log('parent component id mount is called');
     }
+
     render()
     {
         console.log("parent render method is called");
-        return <div>
+        return <>
             <User></User>
-            <UserClass name={'2prince(class component)'} location={"indore"} contact={"princepatel.dev@gmail.com"}></UserClass>
-
-            <UserClass name={'Elon(class component)'} location={"us"} contact={"princepatel.dev@gmail.com"}></UserClass>
-        </div>;
+        </>;
     }
 }
 export { About };

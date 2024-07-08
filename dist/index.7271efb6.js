@@ -34594,37 +34594,13 @@ class About extends (0, _reactDefault.default).Component {
     }
     render() {
         console.log("parent render method is called");
-        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _userDefault.default), {}, void 0, false, {
-                    fileName: "src/components/About.js",
-                    lineNumber: 19,
-                    columnNumber: 13
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _userClassDefault.default), {
-                    name: "2prince(class component)",
-                    location: "indore",
-                    contact: "princepatel.dev@gmail.com"
-                }, void 0, false, {
-                    fileName: "src/components/About.js",
-                    lineNumber: 20,
-                    columnNumber: 13
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _userClassDefault.default), {
-                    name: "Elon(class component)",
-                    location: "us",
-                    contact: "princepatel.dev@gmail.com"
-                }, void 0, false, {
-                    fileName: "src/components/About.js",
-                    lineNumber: 22,
-                    columnNumber: 13
-                }, this)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/About.js",
-            lineNumber: 18,
-            columnNumber: 16
-        }, this);
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _userDefault.default), {}, void 0, false, {
+                fileName: "src/components/About.js",
+                lineNumber: 20,
+                columnNumber: 13
+            }, this)
+        }, void 0, false);
     }
 }
 
@@ -34643,49 +34619,64 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-const User = ()=>{
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "user--card",
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                children: "Name:prince"
-            }, void 0, false, {
-                fileName: "src/components/User.js",
-                lineNumber: 4,
-                columnNumber: 9
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                children: "Location:indore"
-            }, void 0, false, {
-                fileName: "src/components/User.js",
-                lineNumber: 5,
-                columnNumber: 9
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                children: "Contact:princepatel.dev@gmail.com"
-            }, void 0, false, {
-                fileName: "src/components/User.js",
-                lineNumber: 6,
-                columnNumber: 9
-            }, undefined)
-        ]
-    }, void 0, true, {
-        fileName: "src/components/User.js",
-        lineNumber: 3,
-        columnNumber: 12
-    }, undefined);
-};
-_c = User;
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+class User extends (0, _reactDefault.default).Component {
+    constructor(){
+        super();
+        console.log("prince user constructor");
+        this.state = {
+            userInfo: {
+                name: "dummy",
+                location: "default"
+            }
+        };
+    }
+    async componentDidMount() {
+        const fetchData = await fetch("https://api.github.com/users/princewritecode");
+        const dataRecieved = await fetchData.json();
+        this.setState({
+            userInfo: dataRecieved
+        });
+        console.log(dataRecieved);
+    }
+    componentDidUpdate() {
+        console.log("component did update is called after rendered bactch");
+    }
+    render() {
+        const { name, avatar_url } = this.state.userInfo;
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                    children: name
+                }, void 0, false, {
+                    fileName: "src/components/User.js",
+                    lineNumber: 37,
+                    columnNumber: 18
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                    src: avatar_url
+                }, void 0, false, {
+                    fileName: "src/components/User.js",
+                    lineNumber: 38,
+                    columnNumber: 17
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "src/components/User.js",
+            lineNumber: 37,
+            columnNumber: 13
+        }, this);
+    }
+}
 exports.default = User;
-var _c;
-$RefreshReg$(_c, "User");
 
   $parcel$ReactRefreshHelpers$9c32.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"Vp2Fx":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq","react/jsx-dev-runtime":"iTorj"}],"Vp2Fx":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$46df = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -34700,7 +34691,7 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 class UserClass extends (0, _reactDefault.default).Component {
     constructor(props){
         super(props);
-        console.log(this.props.name, "child constructor");
+        console.log("child constructor");
         this.state = {
             count: 0,
             count1: 0,
@@ -34708,10 +34699,10 @@ class UserClass extends (0, _reactDefault.default).Component {
         };
     }
     componentDidMount() {
-        console.log(this.props.name, "child component did mount");
+        console.log("child component did mount");
     }
     render() {
-        console.log(this.props.name, "child render is called");
+        console.log("child render is called");
         const { name, location, contact } = this.props;
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
             className: "user--card",
@@ -34723,7 +34714,7 @@ class UserClass extends (0, _reactDefault.default).Component {
                     ]
                 }, void 0, true, {
                     fileName: "src/components/UserClass.js",
-                    lineNumber: 21,
+                    lineNumber: 22,
                     columnNumber: 13
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
@@ -34733,7 +34724,7 @@ class UserClass extends (0, _reactDefault.default).Component {
                     ]
                 }, void 0, true, {
                     fileName: "src/components/UserClass.js",
-                    lineNumber: 22,
+                    lineNumber: 23,
                     columnNumber: 13
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
@@ -34743,21 +34734,21 @@ class UserClass extends (0, _reactDefault.default).Component {
                     ]
                 }, void 0, true, {
                     fileName: "src/components/UserClass.js",
-                    lineNumber: 23,
+                    lineNumber: 24,
                     columnNumber: 13
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                     children: this.state.count
                 }, void 0, false, {
                     fileName: "src/components/UserClass.js",
-                    lineNumber: 24,
+                    lineNumber: 25,
                     columnNumber: 13
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                     children: this.state.count1
                 }, void 0, false, {
                     fileName: "src/components/UserClass.js",
-                    lineNumber: 25,
+                    lineNumber: 26,
                     columnNumber: 13
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -34769,7 +34760,7 @@ class UserClass extends (0, _reactDefault.default).Component {
                     children: "Increase"
                 }, void 0, false, {
                     fileName: "src/components/UserClass.js",
-                    lineNumber: 26,
+                    lineNumber: 27,
                     columnNumber: 13
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -34781,7 +34772,7 @@ class UserClass extends (0, _reactDefault.default).Component {
                     children: "Decrease"
                 }, void 0, false, {
                     fileName: "src/components/UserClass.js",
-                    lineNumber: 31,
+                    lineNumber: 32,
                     columnNumber: 13
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -34794,13 +34785,13 @@ class UserClass extends (0, _reactDefault.default).Component {
                     children: "Multiply by 2"
                 }, void 0, false, {
                     fileName: "src/components/UserClass.js",
-                    lineNumber: 36,
+                    lineNumber: 37,
                     columnNumber: 13
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/components/UserClass.js",
-            lineNumber: 20,
+            lineNumber: 21,
             columnNumber: 16
         }, this);
     }

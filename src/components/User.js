@@ -1,9 +1,45 @@
-const User = () =>
+import React from 'react';
+
+class User extends React.Component
 {
-    return <div className="user--card">
-        <h1>Name:prince</h1>
-        <h2>Location:indore</h2>
-        <h3>Contact:princepatel.dev@gmail.com</h3>
-    </div>;
-};
+    constructor()
+    {
+        super();
+        console.log('prince user constructor');
+        this.state = {
+            userInfo: {
+                name: 'dummy',
+                location: 'default'
+            }
+        };
+    }
+
+    async componentDidMount()
+    {
+
+        const fetchData = await fetch('https://api.github.com/users/princewritecode');
+        const dataRecieved = await fetchData.json();
+        this.setState({
+            userInfo: dataRecieved
+        });
+        console.log(dataRecieved);
+    }
+
+    componentDidUpdate()
+    {
+        console.log('component did update is called after rendered bactch');
+    }
+
+    render()
+    {
+        const { name, avatar_url } = this.state.userInfo;
+        return (
+            <div><h1>{name}</h1>
+                <img src={avatar_url}></img>
+            </div>
+        );
+    }
+}
+
+
 export default User;
