@@ -61,13 +61,13 @@ const Body = () =>
     {
         return listOfRestaurant.length == 0 ? <Shimmer></Shimmer> : (
             <div className="body">
-                <div className="filter">
-                    <div className="search">
-                        <input onChange={(e) =>
+                <div className="flex">
+                    <div className="p-4 m-4">
+                        <input className='border border-solid ' onChange={(e) =>
                         {
                             setSearchText(e.target.value);
-                        }} type="text" className="search-box" value={searchText} placeholder="Search For Restaurant"></input>
-                        <button onClick={() =>
+                        }} type="text" value={searchText} placeholder="Search For Restaurant"></input>
+                        <button className="px-4 py-2 rounded-lg bg-green-100 m-4 " onClick={() =>
                         {
                             console.log(listOfRestaurant);
                             const filteredRestaurant = listOfRestaurant.filter((res) =>
@@ -78,17 +78,21 @@ const Body = () =>
                         }}
                         >Search</button>
                     </div>
-                    <button className="filter-btn" onClick={
-                        () =>
-                        {
-                            const filteredList = listOfRestaurant.filter(
-                                (res) => res.info.avgRating > 4.4
-                            );
-                            setFilteredRestaurant(filteredList);
-                        }
-                    }>Top Rated Restaurant</button>
+                    <div className="p-4 m-4 flex items-center">
+                        <button className="px-4 rounded-lg py-2 bg-gray-100 " onClick={
+                            () =>
+                            {
+                                const filteredList = listOfRestaurant.filter(
+                                    (res) => res.info.avgRating > 4.4
+                                );
+                                setFilteredRestaurant(filteredList);
+                            }
+                        }>Top Rated Restaurant</button>
+
+                    </div>
+
                 </div>
-                <div className="restaurant-cards">
+                <div className="flex flex-wrap">
                     {
                         filteredRestaurant.map((restaurant) =>
                         {
