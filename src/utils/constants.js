@@ -12,3 +12,4 @@ export { LOGO_URL, CDN_URL, Menu_Api_URL };
 //         'x-cors-api-key': 'temp_a45392459d325608235327dd1b7a8d72'
 //     }
 // } add this object after the link
+

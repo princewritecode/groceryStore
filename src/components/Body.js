@@ -1,8 +1,9 @@
-import { RestaurantCard } from "./RestaurantCard";
+import RestaurantCard, { withOpenLabel } from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../utils/useOnlineStatus";
+import { list } from "postcss";
 // let listOfRestaurant = [
 //     {
 //         "id": "581971",
@@ -25,11 +26,13 @@ import useOnlineStatus from "../../utils/useOnlineStatus";
 // ];
 const Body = () =>
 {
+    const RestaurantCardPromoted = withOpenLabel(RestaurantCard);
     // const { infoWithStyle } = resList.card.card.gridElements;
     // const restaurantss = infoWithStyle.restaurants;
     const [listOfRestaurant, setListOfRestaurant] = useState([]);
     const [filteredRestaurant, setFilteredRestaurant] = useState([]);
     const [searchText, setSearchText] = useState("");
+    console.log('this is list of restaurant', listOfRestaurant);
     useEffect(() =>
     {
         fetchData();
@@ -39,8 +42,6 @@ const Body = () =>
         try
         {
             const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.71700&lng=75.83370&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
-
-
             const json = await data.json();
             setListOfRestaurant(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
             setFilteredRestaurant(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
@@ -49,7 +50,6 @@ const Body = () =>
             console.log('Cannot fetch data from API', error);
         }
     };
-
     const onlineStatus = useOnlineStatus();
     if (onlineStatus === false)
     {
@@ -98,7 +98,7 @@ const Body = () =>
                         {
                             return (
                                 <Link target="blank" key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}>
-                                    <RestaurantCard resdata={restaurant}></RestaurantCard>
+                                    {restaurant.info.isOpen ? <RestaurantCardPromoted resdata={restaurant}></RestaurantCardPromoted> : <RestaurantCard resdata={restaurant}></RestaurantCard>}
                                 </Link>);
                         })
                     }
