@@ -7,6 +7,7 @@ const RestaurantMenu = () =>
 {
     const { resId } = useParams();
     const resInfo = useRestaurantMenu(resId);
+    const [showIndex, setShowIndex] = useState(null);
     if (resInfo === null)
     {
         <Shimmer></Shimmer>;
@@ -28,14 +29,12 @@ const RestaurantMenu = () =>
             <img></img>
             <p className="font-bold text-lg">{cuisines}</p>
             {
-                categories.map((category) =>
+                categories.map((category, index) =>
                 {
-
-                    return <RestaurantCategory data={category.card.card}></RestaurantCategory>;
-
+                    return <RestaurantCategory ket={category.card.card.title} showItems={index === showIndex ? true : false} data={category.card.card} setShowIndex={() => setShowIndex(index)}></RestaurantCategory>;
                 })
             }
-            <h2>Menu</h2>
+            {/* <h2>Menu</h2>
             <ul>
                 {
                     itemCards ?
@@ -49,7 +48,7 @@ const RestaurantMenu = () =>
                                 return (<li key={card.card.info.id}>{card.card.info.name}</li>);
                             })
                 }
-            </ul>
+            </ul> */}
         </div>);
     }
     catch (err)
