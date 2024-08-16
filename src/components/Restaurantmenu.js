@@ -23,7 +23,6 @@ const RestaurantMenu = () =>
                 return c?.card?.card?.["@type"] ===
                     "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory";
             });
-        console.log(categories);
         return (<div className="text-center">
             <h1 className="font-bold my-8 text-2xl">{name}</h1>
             <img></img>
@@ -34,7 +33,7 @@ const RestaurantMenu = () =>
                     return <RestaurantCategory ket={category.card.card.title} showItems={index === showIndex ? true : false} data={category.card.card} setShowIndex={() => setShowIndex(index)}></RestaurantCategory>;
                 })
             }
-            {/* <h2>Menu</h2>
+            <h2>Menu</h2>
             <ul>
                 {
                     itemCards ?
@@ -48,7 +47,7 @@ const RestaurantMenu = () =>
                                 return (<li key={card.card.info.id}>{card.card.info.name}</li>);
                             })
                 }
-            </ul> */}
+            </ul>
         </div>);
     }
     catch (err)

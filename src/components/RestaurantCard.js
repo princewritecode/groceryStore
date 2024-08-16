@@ -1,7 +1,6 @@
 import { CDN_URL } from "../../utils/constants";
 const RestaurantCard = (props) =>
 {
-    console.log(props.resdata);
     return (
         <>
             <div className="m-4 p-4 h-[520px] w-[250px] bg-gray-50 rounded-sm shadow-lg hover:bg-gray-200">

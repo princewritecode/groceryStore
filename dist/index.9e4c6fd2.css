@@ -327,12 +327,12 @@ img, video {
   border-radius: .5rem;
 }
 
-.rounded-sm {
-  border-radius: .125rem;
-}
-
 .rounded-md {
   border-radius: .375rem;
+}
+
+.rounded-sm {
+  border-radius: .125rem;
 }
 
 .border {
@@ -420,6 +420,11 @@ img, video {
 
 .text-lg {
   font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
   line-height: 1.75rem;
 }
 
