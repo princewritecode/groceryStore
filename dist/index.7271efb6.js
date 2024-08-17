@@ -27352,11 +27352,13 @@ var _reactRedux = require("react-redux");
 var _s = $RefreshSig$();
 const Header = ()=>{
     _s();
-    const cartItems = (0, _reactRedux.useSelector)((store)=>store.cart.items);
+    const cartItems = (0, _reactRedux.useSelector)((store)=>{
+        console.log(store, "this is store value");
+        return store.cart.items;
+    });
     const [btnNameReact, setBtnNameReact] = (0, _react.useState)("Login");
     const onlineStatus = (0, _useOnlineStatusDefault.default)();
     const { loggedInUser } = (0, _react.useContext)((0, _userContextDefault.default));
-    console.log(cartItems);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "flex justify-between bg-pink-50 shadow-lg ",
         children: [
@@ -27368,12 +27370,12 @@ const Header = ()=>{
                     alt: "logo"
                 }, void 0, false, {
                     fileName: "src/components/Header.js",
-                    lineNumber: 18,
+                    lineNumber: 20,
                     columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/Header.js",
-                lineNumber: 17,
+                lineNumber: 19,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27389,12 +27391,12 @@ const Header = ()=>{
                                 children: "Home"
                             }, void 0, false, {
                                 fileName: "src/components/Header.js",
-                                lineNumber: 22,
+                                lineNumber: 24,
                                 columnNumber: 42
                             }, undefined)
                         }, void 0, false, {
                             fileName: "src/components/Header.js",
-                            lineNumber: 22,
+                            lineNumber: 24,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -27406,13 +27408,13 @@ const Header = ()=>{
                                     children: "About"
                                 }, void 0, false, {
                                     fileName: "src/components/Header.js",
-                                    lineNumber: 23,
+                                    lineNumber: 25,
                                     columnNumber: 43
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/Header.js",
-                            lineNumber: 23,
+                            lineNumber: 25,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -27422,12 +27424,12 @@ const Header = ()=>{
                                 children: "Contact"
                             }, void 0, false, {
                                 fileName: "src/components/Header.js",
-                                lineNumber: 24,
+                                lineNumber: 26,
                                 columnNumber: 42
                             }, undefined)
                         }, void 0, false, {
                             fileName: "src/components/Header.js",
-                            lineNumber: 24,
+                            lineNumber: 26,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -27435,19 +27437,26 @@ const Header = ()=>{
                             children: onlineStatus ? "\uD83D\uDFE2" : "\uD83D\uDD34"
                         }, void 0, false, {
                             fileName: "src/components/Header.js",
-                            lineNumber: 25,
+                            lineNumber: 27,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
                             className: "px-4 font-bold text-xl",
-                            children: [
-                                "Cart(",
-                                cartItems.length,
-                                ")"
-                            ]
-                        }, void 0, true, {
+                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
+                                to: "/cart",
+                                children: [
+                                    "Cart(",
+                                    cartItems.length,
+                                    ")"
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/Header.js",
+                                lineNumber: 28,
+                                columnNumber: 60
+                            }, undefined)
+                        }, void 0, false, {
                             fileName: "src/components/Header.js",
-                            lineNumber: 26,
+                            lineNumber: 28,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27459,7 +27468,7 @@ const Header = ()=>{
                             children: btnNameReact
                         }, void 0, false, {
                             fileName: "src/components/Header.js",
-                            lineNumber: 27,
+                            lineNumber: 29,
                             columnNumber: 21
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -27467,24 +27476,24 @@ const Header = ()=>{
                             children: loggedInUser
                         }, void 0, false, {
                             fileName: "src/components/Header.js",
-                            lineNumber: 33,
+                            lineNumber: 34,
                             columnNumber: 21
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/Header.js",
-                    lineNumber: 21,
+                    lineNumber: 23,
                     columnNumber: 17
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/Header.js",
-                lineNumber: 20,
+                lineNumber: 22,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Header.js",
-        lineNumber: 16,
+        lineNumber: 18,
         columnNumber: 9
     }, undefined);
 };
@@ -41238,6 +41247,7 @@ function ItemList({ items }) {
     const handleAddItem = (item)=>{
         dispatch((0, _cartSlice.addItem)(item));
     };
+    console.log(items, "list");
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: items.map((item)=>{
             return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41254,12 +41264,12 @@ function ItemList({ items }) {
                                     children: "Add +"
                                 }, void 0, false, {
                                     fileName: "src/components/ItemList.js",
-                                    lineNumber: 24,
+                                    lineNumber: 25,
                                     columnNumber: 33
                                 }, this)
                             }, void 0, false, {
                                 fileName: "src/components/ItemList.js",
-                                lineNumber: 23,
+                                lineNumber: 24,
                                 columnNumber: 29
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
@@ -41267,13 +41277,13 @@ function ItemList({ items }) {
                                 src: (0, _constants.CDN_URL) + item.card.info.imageId
                             }, void 0, false, {
                                 fileName: "src/components/ItemList.js",
-                                lineNumber: 26,
+                                lineNumber: 29,
                                 columnNumber: 29
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/ItemList.js",
-                        lineNumber: 21,
+                        lineNumber: 22,
                         columnNumber: 25
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -41289,7 +41299,7 @@ function ItemList({ items }) {
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/ItemList.js",
-                                        lineNumber: 31,
+                                        lineNumber: 34,
                                         columnNumber: 33
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -41299,13 +41309,13 @@ function ItemList({ items }) {
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/ItemList.js",
-                                        lineNumber: 32,
+                                        lineNumber: 35,
                                         columnNumber: 33
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/ItemList.js",
-                                lineNumber: 30,
+                                lineNumber: 33,
                                 columnNumber: 29
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -41313,25 +41323,25 @@ function ItemList({ items }) {
                                 children: item.card.info.description
                             }, void 0, false, {
                                 fileName: "src/components/ItemList.js",
-                                lineNumber: 36,
+                                lineNumber: 39,
                                 columnNumber: 29
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/ItemList.js",
-                        lineNumber: 29,
+                        lineNumber: 32,
                         columnNumber: 25
                     }, this)
                 ]
             }, item.card.info.id, true, {
                 fileName: "src/components/ItemList.js",
-                lineNumber: 20,
+                lineNumber: 21,
                 columnNumber: 28
             }, this);
         })
     }, void 0, false, {
         fileName: "src/components/ItemList.js",
-        lineNumber: 16,
+        lineNumber: 17,
         columnNumber: 9
     }, this);
 }
@@ -41350,6 +41360,29 @@ $RefreshReg$(_c, "ItemList");
   window.$RefreshSig$ = prevRefreshSig;
 }
 },{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../utils/constants":"iix0N","react-redux":"62sf7","../../utils/cartSlice":"1D8lC"}],"1D8lC":[function(require,module,exports) {
+// import { createSlice } from "@reduxjs/toolkit";
+// const cartSlice = createSlice({
+//     name: 'cart',
+//     initialState: {
+//         items: []
+//     },
+//     reducers: {
+//         addItem: (state, action) =>
+//         {
+//             state.items.push(action.payload);
+//         },
+//         removeItem: (state) =>
+//         {
+//             state.items.pop();
+//         },
+//         clearCart: (state) =>
+//         {
+//             state.items.length = 0;
+//         }
+//     }
+// });
+// export const { addItem, removeItem, clearCart } = cartSlice.actions;
+// export default cartSlice.reducer;
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "addItem", ()=>addItem);
@@ -41369,7 +41402,7 @@ const cartSlice = (0, _toolkit.createSlice)({
             state.items.pop();
         },
         clearCart: (state)=>{
-            state.items.length = 0;
+            state.length = 0;
         }
     }
 });
@@ -45350,11 +45383,19 @@ var thunk = createThunkMiddleware();
 var withExtraArgument = createThunkMiddleware;
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3In7a":[function(require,module,exports) {
+// import { configureStore } from "@reduxjs/toolkit";
+// import cartReducer from './cartSlice';
+// const appStore = configureStore({
+//     reducer: {
+//         cart: cartReducer,
+//     },
+// });
+// export default appStore;
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-var _toolkit = require("@reduxjs/toolkit");
 var _cartSlice = require("./cartSlice");
 var _cartSliceDefault = parcelHelpers.interopDefault(_cartSlice);
+var _toolkit = require("@reduxjs/toolkit");
 const appStore = (0, _toolkit.configureStore)({
     reducer: {
         cart: (0, _cartSliceDefault.default)
@@ -45362,7 +45403,7 @@ const appStore = (0, _toolkit.configureStore)({
 });
 exports.default = appStore;
 
-},{"@reduxjs/toolkit":"fuua8","./cartSlice":"1D8lC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"h8J3U":[function(require,module,exports) {
+},{"./cartSlice":"1D8lC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@reduxjs/toolkit":"fuua8"}],"h8J3U":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$ad24 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -45373,15 +45414,34 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>Cart);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _reactRedux = require("react-redux");
+var _itemList = require("./ItemList");
+var _itemListDefault = parcelHelpers.interopDefault(_itemList);
+var _s = $RefreshSig$();
 function Cart() {
+    _s();
+    const cartItems = (0, _reactRedux.useSelector)((store)=>{
+        return store.cart.items;
+    });
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: "Cart"
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _itemListDefault.default), {
+            items: cartItems
+        }, void 0, false, {
+            fileName: "src/components/Cart.js",
+            lineNumber: 11,
+            columnNumber: 9
+        }, this)
     }, void 0, false, {
         fileName: "src/components/Cart.js",
-        lineNumber: 3,
+        lineNumber: 10,
         columnNumber: 12
     }, this);
 }
+_s(Cart, "sOGYiwJY+kD+ABxufRt7JbvggIE=", false, function() {
+    return [
+        (0, _reactRedux.useSelector)
+    ];
+});
 _c = Cart;
 var _c;
 $RefreshReg$(_c, "Cart");
@@ -45391,6 +45451,6 @@ $RefreshReg$(_c, "Cart");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}]},["9wh9R","1xC6H","2kQhy"], "2kQhy", "parcelRequire94c2")
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-redux":"62sf7","./ItemList":"kZjho"}]},["9wh9R","1xC6H","2kQhy"], "2kQhy", "parcelRequire94c2")
 
 //# sourceMappingURL=index.7271efb6.js.map

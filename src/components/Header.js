@@ -6,13 +6,15 @@ import UserContext from "../../utils/userContext";
 import { useSelector } from "react-redux";
 const Header = () =>
 {
-    const cartItems = useSelector((store) => store.cart.items);
+    const cartItems = useSelector((store) =>
+    {
+        console.log(store, 'this is store value');
+        return store.cart.items;
+    });
     const [btnNameReact, setBtnNameReact] = useState('Login');
     const onlineStatus = useOnlineStatus();
     const { loggedInUser } = useContext(UserContext);
-    console.log(cartItems);
     return (
-
         <div className="flex justify-between bg-pink-50 shadow-lg ">
             <div className="flex items-center">
                 <img className="w-46" src={LOGO_URL} alt="logo"></img>
@@ -23,13 +25,12 @@ const Header = () =>
                     <li className="px-4"> <Link to='/about'>About</Link></li>
                     <li className="px-4"><Link to='/contact'>Contact</Link></li>
                     <li className="px-4">{onlineStatus ? '🟢' : '🔴'}</li>
-                    <li className="px-4 font-bold text-xl">Cart({cartItems.length})</li>
+                    <li className="px-4 font-bold text-xl"><Link to='/cart'>Cart({cartItems.length})</Link></li>
                     <button onClick={() =>
                     {
                         btnNameReact === 'Login' ? setBtnNameReact('Logout') : setBtnNameReact('Login');
                         console.log(setBtnNameReact);
                     }} className="login">{btnNameReact}</button>
-
                     <li className="px-4 font-bold">{loggedInUser}</li>
                 </ul>
             </div>

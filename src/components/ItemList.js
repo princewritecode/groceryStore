@@ -12,6 +12,7 @@ export default function ItemList({ items })
             item
         ));
     };
+    console.log(items, 'list');
     return (
         <div>
             {
@@ -21,7 +22,9 @@ export default function ItemList({ items })
                         <div className="w-3/12">
 
                             <div className="absolute">
-                                <button className="p-2 rounded-md bg-white shadow-lg  m-auto" onClick={() => handleAddItem(item)}>Add +</button>
+                                <button className="p-2 rounded-md bg-white shadow-lg  m-auto" onClick={
+                                    () => handleAddItem(item)
+                                }>Add +</button>
                             </div>
                             <img className="w-full" src={CDN_URL + item.card.info.imageId} ></img>
                         </div>
