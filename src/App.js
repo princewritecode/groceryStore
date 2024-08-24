@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { Header } from "./components/Header";
+import SignUpPage from "./components/Login";
 import { Body } from "./components/Body";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { About } from "./components/About";
@@ -11,10 +12,10 @@ import UserContext from "../utils/userContext";
 import { Provider } from "react-redux";
 import appStore from "../utils/appStore";
 import Cart from "./components/Cart";
+import Browse from "./components/Browse";
 const Applayout = () =>
 {
     const [userName, setUserName] = useState();
-
     useEffect(() =>
     {
         const data = {
@@ -22,7 +23,6 @@ const Applayout = () =>
         };
         setUserName(data.name);
     }, []);
-
     return (
         <>
             <Provider store={appStore}>
@@ -36,28 +36,31 @@ const Applayout = () =>
 };
 const appRouter = createBrowserRouter([
     {
-        path: '/'
+        path: '/', element: <SignUpPage></SignUpPage>
+    },
+    {
+        path: '/browse'
         , element: <Applayout></Applayout>,
         children: [
             {
-                path: '/',
+                path: '/browse',
                 element: <Body></Body>,
             }
             ,
             {
-                path: '/about',
+                path: '/browse/about',
                 element: <About></About>,
             },
             {
-                path: '/contact',
+                path: '/browse/contact',
                 element: <Contact></Contact>,
             },
             {
-                path: '/restaurants/:resId',
+                path: '/browse/restaurants/:resId',
                 element: <RestaurantMenu></RestaurantMenu>,
             },
             {
-                path: '/cart',
+                path: '/browse/cart',
                 element: <Cart></Cart>,
             }
         ],
