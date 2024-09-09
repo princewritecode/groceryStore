@@ -21,9 +21,9 @@ const Header = () =>
             </div>
             <div className="flex items-center">
                 <ul className="flex p-4 m-4" id="nav-links">
-                    <li className="px-4"><Link to='/browse'>Home</Link></li>
-                    <li className="px-4"> <Link to='/browse/about'>About</Link></li>
-                    <li className="px-4"><Link to='/browse/contact'>Contact</Link></li>
+                    <li className="px-4"><Link to='/'>Home</Link></li>
+                    <li className="px-4"> <Link to='/about'>About</Link></li>
+                    <li className="px-4"><Link to='/contact'>Contact</Link></li>
                     <li className="px-4">{onlineStatus ? '🟢' : '🔴'}</li>
                     <li className="px-4 font-bold text-xl"><Link to='/cart'>Cart({cartItems.length})</Link></li>
                     <button onClick={() =>

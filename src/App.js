@@ -3,26 +3,23 @@ import ReactDOM from "react-dom/client";
 import { Header } from "./components/Header";
 import SignUpPage from "./components/Login";
 import { Body } from "./components/Body";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet, useNavigate } from "react-router-dom";
 import { About } from "./components/About";
 import { Contact } from "./components/Contactus";
+import { onAuthStateChanged } from "firebase/auth";
 import { Error } from "./components/Error";
 import { RestaurantMenu } from "./components/Restaurantmenu";
 import UserContext from "../utils/userContext";
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import appStore from "../utils/appStore";
 import Cart from "./components/Cart";
 import Browse from "./components/Browse";
+import { auth } from "../utils/firebase";
+import { addUser, removeUser } from "../utils/userSlice";
 const Applayout = () =>
 {
     const [userName, setUserName] = useState();
-    useEffect(() =>
-    {
-        const data = {
-            name: 'prince'
-        };
-        setUserName(data.name);
-    }, []);
+
     return (
         <>
             <Provider store={appStore}>
@@ -35,32 +32,30 @@ const Applayout = () =>
     );
 };
 const appRouter = createBrowserRouter([
+
     {
-        path: '/', element: <SignUpPage></SignUpPage>
-    },
-    {
-        path: '/browse'
+        path: '/'
         , element: <Applayout></Applayout>,
         children: [
             {
-                path: '/browse',
+                path: '/',
                 element: <Body></Body>,
             }
             ,
             {
-                path: '/browse/about',
+                path: '/about',
                 element: <About></About>,
             },
             {
-                path: '/browse/contact',
+                path: '/contact',
                 element: <Contact></Contact>,
             },
             {
-                path: '/browse/restaurants/:resId',
+                path: '/restaurants/:resId',
                 element: <RestaurantMenu></RestaurantMenu>,
             },
             {
-                path: '/browse/cart',
+                path: '/cart',
                 element: <Cart></Cart>,
             }
         ],
